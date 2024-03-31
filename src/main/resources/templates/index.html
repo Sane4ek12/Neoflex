@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        .center-align {
+            text-align: center;
+            align-content: center;
+            align-items: center;
+        }
+
+        body {
+            background-image: url("/images/background.jpg");
+            background-size: cover;
+        }
+
+        .header-font {
+            font-style: italic;
+        }
+
+        .form-font {
+            font-family: Calibri Tahoma;
+            font-size: 20px;
+        }
+
+        input {
+            width: 300px;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+    </style>
+    <title>Vacation calculator</title>
+</head>
+<body>
+<div class="center-align">
+    <h1 class="header-font">Добро пожаловать в калькулятор отпускных!</h1>
+    <div class="form-font">
+        <form action="/api/calculator/calculate" method="get"><br>
+            <label for="numberInput">Введите свою среднюю зарплату за 12 месяцев</label><br>
+            <input type="number" step="any" min="0" id="numberInput" name="averageSalary" required><br>
+            <label for="vacationDays">Введите количество дней отпуска</label><br>
+            <input type="number" min="1" id="vacationDays" name="countOfDays" required><br>
+            <input type="submit" value="Отправить">
+        </form>
+    </div>
+    <h1 class="header-font" th:if="${vacationValue}" th:text="${'Сумма отпускных = '} + ${vacationValue}"></h1>
+</div>
+</body>
+</html>
